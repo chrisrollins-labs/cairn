@@ -14,15 +14,20 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: read
-      pull-requests: read
     steps:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
-      - uses: gitleaks/gitleaks-action@v2
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          GITLEAKS_ENABLE_COMMENTS: "false"
+      # Scan the full git history directly. The gitleaks action's push mode
+      # diffs firstCommit^..head, which fails on the initial push because the
+      # root commit has no parent; `detect` scans every commit on every run.
+      - name: Install gitleaks
+        run: |
+          VERSION=8.24.3
+          curl -sSfL "https://github.com/gitleaks/gitleaks/releases/download/v${VERSION}/gitleaks_${VERSION}_linux_x64.tar.gz" \
+            | sudo tar -xz -C /usr/local/bin gitleaks
+      - name: Scan full history for secrets
+        run: gitleaks detect --source . --redact --exit-code 1
 
   checks:
     name: Typecheck · lint · test · RLS · migrations · build
