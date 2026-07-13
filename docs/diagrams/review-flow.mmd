@@ -1,0 +1,12 @@
+flowchart TD
+  note["Your note"] --> gw["AI gateway (single egress)<br/>ZDR · per-flow model · transcript"]
+  gw --> draft["Draft (proposal)"]
+  draft -->|human reviews / edits| decide{Approve?}
+  decide -->|reject| discard["Discarded — no record"]
+  decide -->|approve| commit["commitRecord (sole writer)<br/>stamps provenance + content hash"]
+  commit --> record["Record"]
+  record -->|optional| assess["Assessment<br/>separate · versioned · AI-labeled"]
+  draft -. audit .-> chain[("Per-user audit chain<br/>tamper-evident")]
+  commit -. audit .-> chain
+  assess -. audit .-> chain
+  chain --> verify["verify() — recompute every link"]

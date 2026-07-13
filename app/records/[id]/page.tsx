@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { assessRecordAction } from "@/server/actions";
-import { Badge, buttonSecondary, Card, formatTime, Mono, PageHeader, SourceBadge } from "@/components/ui";
+import { Badge, buttonSecondary, Card, formatTime, Mono, SourceBadge } from "@/components/ui";
 import { withService } from "@/server/container";
 import { currentUserId } from "@/server/session";
 
