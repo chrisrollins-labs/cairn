@@ -1,9 +1,9 @@
--- 0006 — the tamper-evident audit chain, enforced in the database.
+-- 0006 - the tamper-evident audit chain, enforced in the database.
 --
 -- This is the Postgres implementation of the same protocol the TypeScript core
 -- implements (src/core/audit). The point of doing it here as well is defense in
--- depth: with the chain sealed by a trigger, even an application bug — or a
--- compromised service credential — cannot rewrite history undetected. The
+-- depth: with the chain sealed by a trigger, even an application bug - or a
+-- compromised service credential - cannot rewrite history undetected. The
 -- server owns seq, prev_hash, and hash; any client-supplied values are
 -- discarded and recomputed on insert, and updates and deletes are refused
 -- outright.
@@ -11,7 +11,7 @@
 -- The exact byte form of the preimage here (metadata rendered as jsonb text)
 -- differs from the TypeScript canonicalization, and that is fine: each
 -- implementation is internally consistent because its writer and its verifier
--- call the SAME hash function. The protocol — the field order below — is shared
+-- call the SAME hash function. The protocol - the field order below - is shared
 -- and documented in docs/AUDIT.md, so the chain can be re-derived from the raw
 -- rows in either. (ADR-002)
 

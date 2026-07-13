@@ -1,9 +1,9 @@
--- 0005 — model-call transcripts.
+-- 0005 - model-call transcripts.
 --
 -- One row per model call: the prompt sent and the completion received, so a
 -- decision can be reviewed later. Transcripts necessarily contain prompt text
 -- (the person's own note), which is exactly why they are kept separate from the
--- audit log — the audit log is metadata-only and references a transcript by id
+-- audit log - the audit log is metadata-only and references a transcript by id
 -- (ADR-003). Transcripts are write-once: insert and select only.
 
 create table public.transcripts (

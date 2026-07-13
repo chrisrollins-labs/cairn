@@ -4,7 +4,7 @@
  * This reference implementation ships a lightweight demo session instead of a
  * full auth stack (TOTP / passkeys / idle-lock are out of scope and noted in
  * docs/architecture/tenancy-and-rls.md as the real plug-in point). What matters
- * for the patterns on show is that there is a *current user id* — the tenant —
+ * for the patterns on show is that there is a *current user id* - the tenant -
  * driving per-user isolation and the per-user audit chain. Two demo users exist
  * precisely so the isolation story is demonstrable: sign in as one, and the
  * other's records and audit chain are simply not visible.

@@ -4,7 +4,7 @@ import type { AiCompletionRequest, AiCompletionResult } from "../types";
 /**
  * The one place a real model endpoint is reached. Targets any service that
  * speaks the OpenAI `/chat/completions` contract (OpenAI, OpenRouter, a local
- * gateway) over `fetch` — no vendor SDK, so there is nothing to lock in.
+ * gateway) over `fetch` - no vendor SDK, so there is nothing to lock in.
  *
  * `fetch` is injected so this transport is unit-testable with a scripted
  * response and never hits the network in tests.

@@ -4,7 +4,7 @@ All notable changes to this project are documented here. The format follows
 [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and commits follow
 [Conventional Commits](https://www.conventionalcommits.org/).
 
-## [0.1.0] — 2026-07-13
+## [0.1.0] - 2026-07-13
 
 Initial public reference implementation.
 
@@ -14,7 +14,7 @@ Initial public reference implementation.
   private `commitRecord` path, reachable only by an explicit human action, is the
   one door into the record store.
 - **Tamper-evident audit chain**: per-user, SHA-256 hash-linked, append-only,
-  with a verifier that shares the writer's hash function — implemented in
+  with a verifier that shares the writer's hash function - implemented in
   TypeScript (default) and as Postgres triggers + a SQL verifier.
 - **Single AI gateway**: the only model egress, forcing zero-data-retention on
   every call, per-flow model routing, least-context scoping, and transcript

@@ -6,7 +6,7 @@ import type { Clock } from "@/shared/clock";
 
 /**
  * The Postgres audit log. Unlike the TypeScript chain, this implementation does
- * NOT compute the chain fields — the database trigger does (db/migrations,
+ * NOT compute the chain fields - the database trigger does (db/migrations,
  * 0006). The app supplies only the semantic fields; the trigger assigns seq,
  * prev_hash, and hash and returns the sealed row. Verification calls the SQL
  * function, which recomputes the chain with the same hash function the trigger

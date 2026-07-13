@@ -1,4 +1,4 @@
-# 008 — RLS in the same migration as each table, gated in CI
+# 008 - RLS in the same migration as each table, gated in CI
 
 **Status:** Accepted
 
@@ -6,7 +6,7 @@
 
 Multi-tenant isolation enforced only in application code is one forgotten
 `where` clause away from a breach. Row-Level Security pushes isolation into the
-database — but only if every table actually has a policy, and "add policies
+database - but only if every table actually has a policy, and "add policies
 later" is exactly how a table ships without one.
 
 ## Decision
@@ -21,7 +21,7 @@ policy, so history is append-only at the policy layer as well as by trigger.
 
 ## Consequences
 
-- Isolation is structural and provably present, not aspirational — and the check
+- Isolation is structural and provably present, not aspirational - and the check
   runs with no database, so it is fast and always on.
 - The in-memory backend enforces the same isolation in code (`where ownerId`), so
   both backends behave identically and the offline tests cover the isolation

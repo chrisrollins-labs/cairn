@@ -14,4 +14,4 @@ if (violations.length > 0) {
   process.exit(1);
 }
 
-console.log(`RLS coverage OK — ${tables.length} tables, all with RLS + a policy.`);
+console.log(`RLS coverage OK - ${tables.length} tables, all with RLS + a policy.`);

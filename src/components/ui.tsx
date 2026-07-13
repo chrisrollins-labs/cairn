@@ -3,7 +3,7 @@ import type { RecordEntry } from "@/core/records/types";
 
 /**
  * Small presentational building blocks shared across the app. All server-safe
- * (no client hooks) — the UI is a thin driver over the domain service.
+ * (no client hooks) - the UI is a thin driver over the domain service.
  */
 
 type Tone = "neutral" | "ai" | "human" | "good" | "bad" | "accent";

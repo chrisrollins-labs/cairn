@@ -26,7 +26,7 @@ describe("full review-and-approve journey", () => {
     expect(record.title).toBe("Trail map revisions");
     expect(await service.listRecords(USER_A)).toHaveLength(1);
 
-    // 3. Avery asks for an assessment — a separate, labeled artifact.
+    // 3. Avery asks for an assessment - a separate, labeled artifact.
     const assessment = await service.assessRecord(USER_A, record.id);
     expect(assessment.label).toBe("ai_generated");
     expect(await service.listRecords(USER_A)).toHaveLength(1); // unchanged

@@ -13,7 +13,7 @@ import { runtimeConfig } from "./config";
  *  - postgres: a fresh service per request, bound to a connection with the
  *    tenancy GUC set, so RLS isolates every query to `userId`.
  *
- * Callers never see the difference — they get a service and a scoped user id.
+ * Callers never see the difference - they get a service and a scoped user id.
  */
 
 let memory: MemoryService | null = null;

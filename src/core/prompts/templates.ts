@@ -7,7 +7,7 @@ import type { AiFlow, AiMessage } from "@/core/ai/types";
  * committed record's provenance. That makes "which prompt produced this?" a
  * question the audit trail can answer, forever.
  *
- * The prompts here are generic and synthetic — they carry none of the wording
+ * The prompts here are generic and synthetic - they carry none of the wording
  * of any production system. The point is the versioning and provenance
  * discipline, not the copy.
  */

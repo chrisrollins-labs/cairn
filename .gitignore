@@ -13,12 +13,12 @@
 # testing
 /coverage
 
-# env — never commit real secrets (see SECURITY.md)
+# env - never commit real secrets (see SECURITY.md)
 .env
 .env.*
 !.env.example
 
-# local database dumps / scratch — never commit real data
+# local database dumps / scratch - never commit real data
 /scratch/
 *.local.db
 

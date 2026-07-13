@@ -14,4 +14,4 @@ if (violations.length > 0) {
   process.exit(1);
 }
 
-console.log(`Migration order OK — ${files.length} migrations, correctly ordered.`);
+console.log(`Migration order OK - ${files.length} migrations, correctly ordered.`);

@@ -28,13 +28,13 @@ export interface ChainVerification {
 /**
  * The tamper-evident audit chain (ADR-002).
  *
- * Like a cairn — a trail marker built by stacking stones — each event rests on
+ * Like a cairn - a trail marker built by stacking stones - each event rests on
  * the one below it: its hash folds in the previous event's hash. Alter, drop,
  * or reorder a single event and every hash from that point on stops matching,
  * so `verify` can point at exactly where the chain was disturbed.
  *
  * The chain writes nothing but audit events. It never decides whether an action
- * is allowed — the domain services do that — it only makes the sequence of
+ * is allowed - the domain services do that - it only makes the sequence of
  * actions provable after the fact.
  */
 export class AuditChain implements AuditLog {

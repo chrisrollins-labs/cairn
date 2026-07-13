@@ -33,8 +33,8 @@ export interface AssessmentStore {
 
 /**
  * The record-domain stores. The audit log is a separate abstraction
- * (@/core/audit/log) because, in the Postgres backend, the database — not a
- * store — owns the chain; keeping it out of this bundle lets both backends
+ * (@/core/audit/log) because, in the Postgres backend, the database - not a
+ * store - owns the chain; keeping it out of this bundle lets both backends
  * share one shape.
  */
 export interface Stores {

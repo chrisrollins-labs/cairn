@@ -74,7 +74,7 @@ export default async function RecordPage({ params }: { params: Promise<{ id: str
             assessments.map((a) => (
               <Card key={a.id} className={a.active ? "" : "opacity-60"}>
                 <div className="flex items-center gap-2">
-                  <Badge tone="ai">AI-generated — not your words</Badge>
+                  <Badge tone="ai">AI-generated - not your words</Badge>
                   <span className="text-xs text-zinc-400">
                     v{a.version} · {a.active ? "active" : "superseded"} · {formatTime(a.createdAt)}
                   </span>

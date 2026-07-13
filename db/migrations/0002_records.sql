@@ -1,7 +1,7 @@
--- 0002 — committed records.
+-- 0002 - committed records.
 --
 -- The user-facing record. A row here only ever comes from the commit path in
--- the application (approving a draft, or authoring directly) — the AI code path
+-- the application (approving a draft, or authoring directly) - the AI code path
 -- has no way to insert one (ADR-001). RLS scopes every row to its owner.
 
 create table public.records (

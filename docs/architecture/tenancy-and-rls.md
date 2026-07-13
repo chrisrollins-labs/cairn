@@ -31,8 +31,8 @@ creates each table:
 
 - **User-owned tables** (`records`, `drafts`, `assessments`, `transcripts`) scope
   every operation to `owner_id = app_current_user_id()`.
-- **The audit table** allows only `select` and `insert` for the owner — no update
-  or delete policy — so history is append-only at the policy layer, on top of the
+- **The audit table** allows only `select` and `insert` for the owner - no update
+  or delete policy - so history is append-only at the policy layer, on top of the
   immutability trigger.
 
 A CI gate (`scripts/check-rls-coverage.mjs`) statically parses the migrations and
@@ -43,13 +43,13 @@ with no database, so it is always on.
 
 The in-memory backend enforces the same contract in code: every read filters by
 `ownerId`. This is why the offline tests can assert the isolation guarantee (one
-tenant cannot see another's records or audit chain) without a database — the
+tenant cannot see another's records or audit chain) without a database - the
 behavior is identical to the RLS-enforced path.
 
 ## What is out of scope
 
 Authentication is not implemented. A real deployment would resolve the current
-user from an authenticated session — MFA, WebAuthn passkeys, idle-lock, and
+user from an authenticated session - MFA, WebAuthn passkeys, idle-lock, and
 re-auth gates on sensitive actions are the natural additions and the intended
 plug-in point. This reference ships a demo session (`src/server/session.ts`) that
 supplies a current user id and nothing more, because the tenant id is all the

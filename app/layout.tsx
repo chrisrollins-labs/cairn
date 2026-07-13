@@ -3,7 +3,7 @@ import { Header } from "@/components/header";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "cairn — review-gated, tamper-evident records",
+  title: "cairn - review-gated, tamper-evident records",
   description:
     "A reference implementation where AI can draft but only a human can commit, and every change joins a verifiable hash chain.",
 };

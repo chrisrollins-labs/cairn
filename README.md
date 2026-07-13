@@ -1,6 +1,6 @@
 # cairn
 
-**AI can draft, but only a human can commit — and every change is provable after the fact.**
+**AI can draft, but only a human can commit - and every change is provable after the fact.**
 
 [![CI](https://github.com/chrisrollins-labs/cairn/actions/workflows/ci.yml/badge.svg)](https://github.com/chrisrollins-labs/cairn/actions/workflows/ci.yml)
 [![CodeQL](https://github.com/chrisrollins-labs/cairn/actions/workflows/codeql.yml/badge.svg)](https://github.com/chrisrollins-labs/cairn/actions/workflows/codeql.yml)
@@ -22,8 +22,8 @@ disturbed a stone.
 
 A small, working system for personal records where an assistant can help but is
 never in charge. You write a rough note; the model proposes a clean entry;
-**nothing becomes a record until you review and approve it.** Every step — the
-proposal, your edits, your decision, the commit — is appended to a
+**nothing becomes a record until you review and approve it.** Every step - the
+proposal, your edits, your decision, the commit - is appended to a
 tamper-evident, per-user audit chain you can verify at any time. It runs with
 zero infrastructure (in-memory, deterministic mock model) and drops onto
 Postgres by changing one composition line.
@@ -34,15 +34,15 @@ Wiring a prompt to an API key is a demo. Letting a model touch a person's record
 raises harder questions, and this repo is a set of answered ones:
 
 - How do you keep a model from putting words in a user's mouth? _(It can only
-  propose; a person commits — ADR-001.)_
+  propose; a person commits - ADR-001.)_
 - How do you prove your audit log wasn't edited after the fact? _(A hash chain
-  whose writer and verifier share one function — ADR-002.)_
+  whose writer and verifier share one function - ADR-002.)_
 - How do you keep every model call zero-retention and least-context, uniformly?
-  _(One gateway is the only egress — ADR-004, ADR-005.)_
+  _(One gateway is the only egress - ADR-004, ADR-005.)_
 - How do you keep machine commentary from being mistaken for the user's words?
-  _(Separate, versioned, labeled artifacts — ADR-007.)_
+  _(Separate, versioned, labeled artifacts - ADR-007.)_
 - How do you make tenant isolation provable, not aspirational? _(RLS in every
-  table's migration, gated in CI — ADR-008.)_
+  table's migration, gated in CI - ADR-008.)_
 
 ## Three ideas do most of the work
 
@@ -65,14 +65,14 @@ flowchart TD
   note["Your note"] --> gw["AI gateway (single egress)\nZDR · per-flow model · transcript"]
   gw --> draft["Draft (proposal)"]
   draft -->|human reviews / edits| decide{Approve?}
-  decide -->|reject| discard["Discarded — no record"]
+  decide -->|reject| discard["Discarded - no record"]
   decide -->|approve| commit["commitRecord (sole writer)\nstamps provenance + content hash"]
   commit --> record["Record"]
   record -->|optional| assess["Assessment\nseparate · versioned · AI-labeled"]
   draft -.audit.-> chain[("Per-user audit chain\ntamper-evident")]
   commit -.audit.-> chain
   assess -.audit.-> chain
-  chain --> verify["verify() — recompute every link"]
+  chain --> verify["verify() - recompute every link"]
 ```
 
 The AI path (gateway → draft / assessment) has no access to `commitRecord`.
@@ -80,11 +80,11 @@ Every box that changes state writes one event to the chain.
 
 ## Tech stack
 
-- **TypeScript (strict)** — `strict`, `noUncheckedIndexedAccess`, and friends
-- **Next.js 16** (App Router, React 19) — a thin UI + Server Actions over the domain
+- **TypeScript (strict)** - `strict`, `noUncheckedIndexedAccess`, and friends
+- **Next.js 16** (App Router, React 19) - a thin UI + Server Actions over the domain
 - **PostgreSQL** with Row-Level Security and a trigger-sealed audit chain
 - **Zod** for structured-output and input validation
-- **Vitest** — 50 offline, deterministic tests
+- **Vitest** - 50 offline, deterministic tests
 - **GitHub Actions** + gitleaks + CodeQL
 
 The domain core is framework-agnostic; Next.js is a driver, not a dependency of
@@ -94,7 +94,7 @@ the patterns.
 
 ```bash
 npm install
-npm run dev        # in-memory backend + mock model — zero infrastructure
+npm run dev        # in-memory backend + mock model - zero infrastructure
 ```
 
 Open http://localhost:3000, write a note, and approve a draft. No database or API
@@ -127,15 +127,15 @@ To run against Postgres instead, set `CAIRN_STORE=postgres` and `DATABASE_URL`
 
 ## Documentation
 
-- [`ARCHITECTURE.md`](./ARCHITECTURE.md) — the shape of the system, end to end
-- [`docs/AUDIT.md`](./docs/AUDIT.md) — what the audit chain proves, and honestly what it does not
-- [`docs/decisions`](./docs/decisions) — nine ADRs, one per load-bearing choice
-- [`docs/architecture`](./docs/architecture) — the review gate and the tenancy/RLS model
-- [`SECURITY.md`](./SECURITY.md) — the secrets policy and threat notes
+- [`ARCHITECTURE.md`](./ARCHITECTURE.md) - the shape of the system, end to end
+- [`docs/AUDIT.md`](./docs/AUDIT.md) - what the audit chain proves, and honestly what it does not
+- [`docs/decisions`](./docs/decisions) - nine ADRs, one per load-bearing choice
+- [`docs/architecture`](./docs/architecture) - the review gate and the tenancy/RLS model
+- [`SECURITY.md`](./SECURITY.md) - the secrets policy and threat notes
 
 ## Author
 
-Built by **Chris Rollins** — full-stack / AI engineer.
+Built by **Chris Rollins** - full-stack / AI engineer.
 
 - Portfolio & case study: [rollinsdigital.com/projects/cairn](https://rollinsdigital.com/projects/cairn)
 - GitHub: [github.com/chrisrollins-labs](https://github.com/chrisrollins-labs)

@@ -19,7 +19,7 @@ export function createPgExecutor(pool: Pool): QueryExecutor {
  * scopes every query to `userId` (ADR-006). This is the request-scoped pattern:
  * check out a connection, pin `app.user_id`, do the work, release. Because
  * `set_config(..., true)` is transaction/session-local to that connection, one
- * tenant's requests can never read another's rows — the database enforces it,
+ * tenant's requests can never read another's rows - the database enforces it,
  * not the application.
  */
 export async function withTenant<T>(

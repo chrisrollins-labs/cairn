@@ -1,6 +1,6 @@
 /**
  * A tiny Result type, used where a failure is an expected, first-class outcome
- * rather than an exception — e.g. verifying a hash chain that may legitimately
+ * rather than an exception - e.g. verifying a hash chain that may legitimately
  * come back "broken". Keeping expected failure out of the throw path makes the
  * handling explicit at the call site.
  */

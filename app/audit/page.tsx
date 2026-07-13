@@ -23,7 +23,7 @@ export default async function AuditPage() {
       <PageHeader
         eyebrow="Chain of custody"
         title="Audit chain"
-        intro="Every action you take is appended here, each event's hash folding in the one before it — like a cairn, each stone resting on the last. The result is recomputed from the raw rows on every load; alter or drop any event and the check below points at exactly where it breaks."
+        intro="Every action you take is appended here, each event's hash folding in the one before it - like a cairn, each stone resting on the last. The result is recomputed from the raw rows on every load; alter or drop any event and the check below points at exactly where it breaks."
       />
 
       {verification.ok ? (

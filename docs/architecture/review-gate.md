@@ -18,7 +18,7 @@ createHumanEntry ▶ commitRecord ─▶ records   ├─ human paths: the only 
                                             ─┘
 ```
 
-The `AiGateway` — the only way to reach a model — is constructed with a
+The `AiGateway` - the only way to reach a model - is constructed with a
 transcript store, a clock, and an id generator. It has no reference to the record
 store at all. So "the AI wrote a record" is not a risk to be reviewed for; it
 cannot be expressed.

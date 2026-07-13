@@ -36,7 +36,7 @@ export default async function DraftReviewPage({ params }: { params: Promise<{ id
         <PageHeader
           eyebrow="Human-in-the-loop review"
           title="Review a proposal"
-          intro="The assistant drafted this from your note. Edit anything you like, then approve to commit it as a record — or reject it and nothing is saved."
+          intro="The assistant drafted this from your note. Edit anything you like, then approve to commit it as a record - or reject it and nothing is saved."
         />
       </div>
 
@@ -57,7 +57,7 @@ export default async function DraftReviewPage({ params }: { params: Promise<{ id
           <Card className="mb-5">
             <div className="mb-3 flex items-center gap-2">
               <h2 className="text-base font-semibold text-zinc-900">Proposed entry</h2>
-              <Badge tone="ai">AI draft — not yet a record</Badge>
+              <Badge tone="ai">AI draft - not yet a record</Badge>
             </div>
 
             <form className="space-y-3">
@@ -97,7 +97,7 @@ export default async function DraftReviewPage({ params }: { params: Promise<{ id
           <form action={rejectDraftAction}>
             <input type="hidden" name="draftId" value={draft.id} />
             <button type="submit" className={buttonDanger}>
-              Reject — commit nothing
+              Reject - commit nothing
             </button>
           </form>
         </>

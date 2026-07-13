@@ -7,9 +7,9 @@ import type { AiFlow, AiMessage } from "./types";
 /**
  * The AI gateway (ADR-004): the one and only path from this app to a model.
  *
- * It enforces the guarantees that make model use safe here — an allow-list of
+ * It enforces the guarantees that make model use safe here - an allow-list of
  * flows, a per-flow model, zero-data-retention on every call, and a transcript
- * written for every call — in one place, so no feature can accidentally reach a
+ * written for every call - in one place, so no feature can accidentally reach a
  * model on its own terms. Crucially, the gateway can write a transcript but has
  * no access to the record store: its output is always a proposal or a labeled
  * artifact, never a committed record (ADR-001).

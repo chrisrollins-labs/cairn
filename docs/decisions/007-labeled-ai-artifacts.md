@@ -1,4 +1,4 @@
-# 007 — AI output is a separate, versioned, labeled artifact
+# 007 - AI output is a separate, versioned, labeled artifact
 
 **Status:** Accepted
 
@@ -6,7 +6,7 @@
 
 Beyond drafting an entry, the assistant can reflect on an existing record (an
 "assessment"). The danger is that machine-generated commentary gets folded into
-the user's own words — so that later, no one can tell which sentences the person
+the user's own words - so that later, no one can tell which sentences the person
 wrote and which the model did.
 
 ## Decision

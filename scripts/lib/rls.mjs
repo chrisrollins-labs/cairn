@@ -4,7 +4,7 @@ import { join } from "node:path";
 /**
  * RLS coverage check (ADR-006). Statically parses the migration SQL and asserts
  * that every table created in an application schema has BOTH row-level security
- * enabled AND at least one policy — in the migrations, not just "in production".
+ * enabled AND at least one policy - in the migrations, not just "in production".
  * This is the gate that makes tenant isolation provably present instead of
  * aspirational, and it runs with no database, so it is fast and always on.
  *

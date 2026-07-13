@@ -1,11 +1,11 @@
-# 006 — Prompt templates are versioned data, locked into provenance
+# 006 - Prompt templates are versioned data, locked into provenance
 
 **Status:** Accepted
 
 ## Context
 
 Prompts change. When a record was produced with an assistant's help, "which
-prompt produced this?" is a question you will eventually need to answer — for a
+prompt produced this?" is a question you will eventually need to answer - for a
 user asking why, for a bug, for an audit. If the prompt is just a string that
 gets edited in place, that history is gone.
 

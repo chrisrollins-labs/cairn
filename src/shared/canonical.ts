@@ -2,7 +2,7 @@
  * Canonical JSON serialization.
  *
  * The audit hash chain (ADR-002) hashes over a byte string that must be
- * reproducible by anyone re-deriving it — including the SQL implementation in
+ * reproducible by anyone re-deriving it - including the SQL implementation in
  * db/migrations. Plain `JSON.stringify` is not stable: object key order follows
  * insertion order, so two equal objects can serialize differently and hash
  * differently. `canonicalize` fixes an ordering (keys sorted lexicographically,
@@ -10,7 +10,7 @@
  * logical metadata always produces the same bytes.
  *
  * The accepted shape is deliberately narrow: audit metadata is IDs, enums, and
- * small numbers — never record content — so we only need JSON scalars, arrays,
+ * small numbers - never record content - so we only need JSON scalars, arrays,
  * and plain objects.
  */
 

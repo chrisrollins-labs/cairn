@@ -3,7 +3,7 @@ import { z } from "zod";
 /**
  * The structural gate on content. The AI's draft output and any human edit are
  * both validated against these before anything is stored, so malformed or
- * oversized content never reaches the store — regardless of whether a model or
+ * oversized content never reaches the store - regardless of whether a model or
  * a person produced it.
  */
 

@@ -20,7 +20,7 @@ export default async function HomePage() {
         intro={
           <>
             Write a rough note and the assistant proposes a clean entry. Nothing is saved to
-            your records until you review and approve it — and every step, from the proposal to
+            your records until you review and approve it - and every step, from the proposal to
             your decision, is written to a tamper-evident audit chain you can verify at any time.
           </>
         }
@@ -33,7 +33,7 @@ export default async function HomePage() {
             <Badge tone="ai">AI proposes</Badge>
           </div>
           <p className="mt-1 text-sm text-zinc-600">
-            The model writes a draft. It cannot save a record — only propose one.
+            The model writes a draft. It cannot save a record - only propose one.
           </p>
           <form action={proposeDraftAction} className="mt-4">
             <textarea
@@ -55,7 +55,7 @@ export default async function HomePage() {
             <Badge tone="human">You author</Badge>
           </div>
           <p className="mt-1 text-sm text-zinc-600">
-            Your own words, committed immediately — no gate needed when you are the author.
+            Your own words, committed immediately - no gate needed when you are the author.
           </p>
           <form action={writeDirectlyAction} className="mt-4 space-y-3">
             <input

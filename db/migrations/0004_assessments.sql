@@ -1,4 +1,4 @@
--- 0004 — labeled AI artifacts.
+-- 0004 - labeled AI artifacts.
 --
 -- An assessment is a separate, versioned, AI-authored artifact about a record.
 -- It is never merged into the record's body and is always labeled

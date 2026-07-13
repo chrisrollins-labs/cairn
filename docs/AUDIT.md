@@ -1,7 +1,7 @@
 # The audit chain: what it proves, and what it does not
 
 The audit chain is the trust substrate of this project. This document states its
-protocol precisely and is honest about its limits — an audit control you cannot
+protocol precisely and is honest about its limits - an audit control you cannot
 describe exactly is not one you can rely on.
 
 ## The protocol
@@ -15,7 +15,7 @@ Every user has their own chain. Each event has:
 | `at` | epoch milliseconds the event was recorded |
 | `type` | a dotted event type (`draft.proposed`, `record.committed`, …) |
 | `subjectId` | the id of the record/draft/assessment the event is about |
-| `metadata` | IDs / enums / counts / hashes only — never record content |
+| `metadata` | IDs / enums / counts / hashes only - never record content |
 | `prevHash` | the previous event's `hash`, or 64 zeros for `seq` 1 |
 | `hash` | SHA-256 of the preimage below |
 
@@ -31,8 +31,8 @@ subjectId
 canonical(metadata)
 ```
 
-Every field is a hash, a number, a UUID, an enum, or canonical JSON — none can
-contain a raw newline — so the join is unambiguous. `hash = SHA-256(preimage)`.
+Every field is a hash, a number, a UUID, an enum, or canonical JSON - none can
+contain a raw newline - so the join is unambiguous. `hash = SHA-256(preimage)`.
 The one function that computes this (`hashEvent`) is called by **both the writer
 and the verifier**, so "how we wrote it" and "how we check it" cannot drift.
 
@@ -44,9 +44,9 @@ each stored `hash` recomputes from its fields. The first failure is reported wit
 its position and reason. Verification is read-only: checking the chain can never
 change it.
 
-Alter a field of any event, and its stored hash no longer recomputes — caught at
+Alter a field of any event, and its stored hash no longer recomputes - caught at
 that event. Swap a stored hash, and the next event's `prevHash` no longer
-matches — caught there. Drop or reorder an event, and the `seq` sequence breaks —
+matches - caught there. Drop or reorder an event, and the `seq` sequence breaks -
 caught there.
 
 ## Two implementations, one protocol
@@ -59,7 +59,7 @@ caught there.
   `verify_audit_chain()` recomputes with the same SQL hash function the trigger
   used.
 
-The two are each **internally consistent** — within each, the writer and verifier
+The two are each **internally consistent** - within each, the writer and verifier
 share one hash function. They are **not required to produce byte-identical
 hashes**: the TypeScript side canonicalizes metadata with a stable JSON
 serializer, while the SQL side renders it as `jsonb` text. The invariant is the
@@ -86,12 +86,12 @@ Being explicit about the boundaries:
   extension and is intentionally out of scope here.
 - **Write-time trust.** The chain guarantees that once written, events cannot be
   altered undetectably. It does not adjudicate whether the application told the
-  truth at the instant of writing — that is the job of the review gate and the
+  truth at the instant of writing - that is the job of the review gate and the
   provenance it stamps, not the chain.
 - **Single-node ordering.** `seq` is assigned per owner under a lock (a per-owner
   advisory lock in Postgres; single-threaded in memory). This is ordering within
   one logical writer, not distributed consensus.
 
-None of these limits weaken the core guarantee — *the recorded history cannot be
-edited after the fact without detection* — but naming them is part of making the
+None of these limits weaken the core guarantee - *the recorded history cannot be
+edited after the fact without detection* - but naming them is part of making the
 control trustworthy.

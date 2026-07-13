@@ -7,9 +7,9 @@ live in the core; Next.js and Postgres are drivers.
 ## The shape
 
 ```
-app/ (Next.js)                Server Actions — the only mutation surface
+app/ (Next.js)                Server Actions - the only mutation surface
   └── src/server              session (current tenant) + container (backend wiring)
-        └── src/core          the domain — no framework, no I/O of its own
+        └── src/core          the domain - no framework, no I/O of its own
               ├── records      the review gate + labeled assessments
               ├── audit        the tamper-evident hash chain + verifier
               ├── ai           the single model gateway + providers + scoping
@@ -24,14 +24,14 @@ app/ (Next.js)                Server Actions — the only mutation surface
 Everything that touches the outside world is an interface the core depends on,
 never a concrete implementation:
 
-- **`AiTransport`** — how a model is called. Real (`fetch` to an
+- **`AiTransport`** - how a model is called. Real (`fetch` to an
   OpenAI-compatible endpoint) or a deterministic mock.
 - **Store interfaces** (`RecordStore`, `DraftStore`, `AssessmentStore`,
-  `TranscriptStore`) — persistence per aggregate. In-memory or Postgres.
-- **`AuditLog`** — append / list / verify the chain. TypeScript
+  `TranscriptStore`) - persistence per aggregate. In-memory or Postgres.
+- **`AuditLog`** - append / list / verify the chain. TypeScript
   (`AuditChain`) or Postgres (`PgAuditLog`, backed by the trigger).
-- **`QueryExecutor`** — the one place the `pg` driver is seen.
-- **`Clock` / `IdGen`** — time and identity, injected so the core is
+- **`QueryExecutor`** - the one place the `pg` driver is seen.
+- **`Clock` / `IdGen`** - time and identity, injected so the core is
   deterministic under test.
 
 The composition root (`src/core/runtime.ts`) wires these once. `createMemoryService`
@@ -58,7 +58,7 @@ corrective retry before it is rejected.
 Every state change appends one event to the actor's chain. See
 [`docs/AUDIT.md`](./docs/AUDIT.md) for the exact preimage and guarantees. In
 short: per-user, hash-linked, append-only, with a verifier that recomputes every
-link using the same function the writer used — implemented both in TypeScript
+link using the same function the writer used - implemented both in TypeScript
 (default) and as a Postgres trigger + SQL verifier (defense in depth).
 
 ## The AI gateway

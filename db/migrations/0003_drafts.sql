@@ -1,4 +1,4 @@
--- 0003 — proposals.
+-- 0003 - proposals.
 --
 -- Drafts are where the AI writes. Creating or editing a draft commits nothing a
 -- person will see as a record; a draft leaves this table only by an explicit

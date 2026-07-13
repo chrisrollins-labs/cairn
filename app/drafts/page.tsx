@@ -12,7 +12,7 @@ export default async function DraftsPage() {
       <PageHeader
         eyebrow="Review queue"
         title="Drafts awaiting your review"
-        intro="These are proposals. None of them is a record yet. Open one to review, edit, and approve — or reject it, in which case nothing is ever committed."
+        intro="These are proposals. None of them is a record yet. Open one to review, edit, and approve - or reject it, in which case nothing is ever committed."
       />
 
       {drafts.length === 0 ? (

@@ -5,7 +5,7 @@ import { DEFAULT_DEMO_USER, findDemoUser } from "@/core/tenancy/demo-users";
  * The demo session. A real deployment would resolve the tenant from an
  * authenticated session (MFA / passkeys are out of scope here and noted as the
  * plug-in point in docs/architecture/tenancy-and-rls.md). What the rest of the
- * app needs is simply "who is the current user" — a tenant id — which everything
+ * app needs is simply "who is the current user" - a tenant id - which everything
  * downstream scopes to.
  */
 

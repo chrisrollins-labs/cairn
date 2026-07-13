@@ -10,7 +10,7 @@ import type { AuditEvent } from "./event";
  *  - PgAuditLog (Postgres): the database trigger seals each event and a SQL
  *    function verifies; the app only supplies the semantic fields.
  *
- * The service never needs to know which one it has — it appends events and asks
+ * The service never needs to know which one it has - it appends events and asks
  * for verification, and either implementation answers.
  */
 export interface AuditLog {

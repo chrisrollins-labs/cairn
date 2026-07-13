@@ -173,7 +173,7 @@ export class RecordsService {
     return record;
   }
 
-  /** A person authoring their own entry directly — no proposal, no gate needed. */
+  /** A person authoring their own entry directly - no proposal, no gate needed. */
   async createHumanEntry(ownerId: string, content: EntryContent): Promise<RecordEntry> {
     const clean = EntryContentSchema.parse(content);
     return this.commitRecord({

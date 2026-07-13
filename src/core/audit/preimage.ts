@@ -7,7 +7,7 @@ import type { AuditEventPreimageFields } from "./event";
  *
  * An event's hash is SHA-256 over the newline-joined preimage below, in exactly
  * this field order. Every field is either a hash, a number, a UUID, an enum, or
- * canonical JSON — none can contain a raw newline — so the join is unambiguous.
+ * canonical JSON - none can contain a raw newline - so the join is unambiguous.
  *
  * This is the single definition of "how a link is computed". `hashEvent` is
  * called by both the writer (AuditChain.append) and the verifier

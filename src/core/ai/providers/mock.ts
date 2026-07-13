@@ -2,8 +2,8 @@ import type { AiTransport } from "../transport";
 import type { AiCompletionRequest, AiCompletionResult } from "../types";
 
 /**
- * A deterministic, offline transport. Same input in, same output out — no
- * network, no clock, no randomness — so it is both the test double and the
+ * A deterministic, offline transport. Same input in, same output out - no
+ * network, no clock, no randomness - so it is both the test double and the
  * zero-infrastructure default when no API key is configured (ADR-009).
  *
  * It is allowed to "read the instructions": when the system prompt asks for a
@@ -72,7 +72,7 @@ function deriveBody(note: string): string {
   return withPeriod.charAt(0).toUpperCase() + withPeriod.slice(1);
 }
 
-/** A crude, stable token estimate — enough for cost/usage instrumentation. */
+/** A crude, stable token estimate - enough for cost/usage instrumentation. */
 function countTokens(text: string): number {
   const trimmed = text.trim();
   if (trimmed.length === 0) return 0;

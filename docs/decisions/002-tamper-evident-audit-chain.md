@@ -1,4 +1,4 @@
-# 002 — A tamper-evident per-user SHA-256 audit chain
+# 002 - A tamper-evident per-user SHA-256 audit chain
 
 **Status:** Accepted
 
@@ -35,4 +35,4 @@ There are two implementations of this one protocol:
   shared, documented protocol is the field order, so the chain can be re-derived
   from the raw rows in either.
 - What this does **not** prove is documented honestly in `docs/AUDIT.md`
-  (notably: no external time anchoring — a future direction).
+  (notably: no external time anchoring - a future direction).

@@ -1,6 +1,6 @@
 # Contributing
 
-This is a portfolio reference implementation, so contributions are unlikely — but
+This is a portfolio reference implementation, so contributions are unlikely - but
 the conventions matter, and they double as documentation of how the project holds
 its bar.
 

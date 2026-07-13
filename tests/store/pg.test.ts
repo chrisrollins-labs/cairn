@@ -70,7 +70,7 @@ describe("PgAuditLog", () => {
       ownerId: "u1", type: "record.committed", subjectId: "r1", metadata: { source: "human" },
     });
 
-    // The app never sends seq / prev_hash / hash — the trigger seals those.
+    // The app never sends seq / prev_hash / hash - the trigger seals those.
     const sql = db.sqlAt(0);
     expect(sql).toContain("insert into public.audit_events (owner_id, at_ms, event_type, subject_id, metadata)");
     expect(sql).not.toContain("prev_hash)");

@@ -4,13 +4,13 @@ import type { JsonValue } from "@/shared/canonical";
  * The audit event.
  *
  * Every meaningful state change appends one event to the actor's chain. The
- * metadata is deliberately IDs, enums, and counts only — never a record's title
+ * metadata is deliberately IDs, enums, and counts only - never a record's title
  * or body (ADR-003). The audit log proves *that* something happened and in what
  * order; it is not a second copy of the data it describes.
  */
 
 export type AuditEventType =
-  | "draft.proposed" // an AI (or a person) proposed a draft — nothing user-visible was committed
+  | "draft.proposed" // an AI (or a person) proposed a draft - nothing user-visible was committed
   | "draft.edited" // a person changed a pending draft before deciding on it
   | "draft.rejected" // a person declined a draft; no record was created
   | "record.committed" // a person approved a draft (or wrote directly): a record now exists
@@ -36,5 +36,5 @@ export interface AuditEvent {
   readonly hash: string;
 }
 
-/** The fields that determine an event's hash — everything except the hash. */
+/** The fields that determine an event's hash - everything except the hash. */
 export type AuditEventPreimageFields = Omit<AuditEvent, "hash">;

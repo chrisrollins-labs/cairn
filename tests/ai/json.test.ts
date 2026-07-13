@@ -11,7 +11,7 @@ describe("extractJsonObject", () => {
   });
 
   it("pulls an object out of surrounding prose", () => {
-    expect(extractJsonObject('Here you go: {"a":1} — hope that helps')).toEqual({ a: 1 });
+    expect(extractJsonObject('Here you go: {"a":1} - hope that helps')).toEqual({ a: 1 });
   });
 
   it("throws when there is no object", () => {

@@ -7,7 +7,7 @@
  * history" into every prompt is how cost, latency, and exposure all creep up at
  * once; this keeps the blast radius of any single call small and predictable.
  *
- * Pure functions, no I/O — the service fetches candidates, this decides what
+ * Pure functions, no I/O - the service fetches candidates, this decides what
  * actually goes in the prompt.
  */
 

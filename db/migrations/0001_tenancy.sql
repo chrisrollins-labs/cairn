@@ -1,4 +1,4 @@
--- 0001 — extensions and the tenancy helper.
+-- 0001 - extensions and the tenancy helper.
 --
 -- Migrations are the single source of schema truth (ADR-008): every schema
 -- change is an appended, ordered SQL file applied in filename order, never a

@@ -11,7 +11,7 @@ import { systemClock, uuidGen, type Clock, type IdGen } from "@/shared/clock";
 
 /**
  * The composition root. It wires the gateway, an audit log, and the service over
- * a set of stores — so choosing in-memory vs Postgres is a decision made once,
+ * a set of stores - so choosing in-memory vs Postgres is a decision made once,
  * at the edge, and nothing downstream changes (ADR-009). Time and identity are
  * injectable so the whole service can run deterministically under test.
  */
@@ -85,7 +85,7 @@ export interface PgServiceOptions {
 /**
  * The Postgres backend, built over a tenant-scoped executor (see pg-executor
  * withTenant). The database seals the audit chain and enforces RLS; the service
- * code above is byte-for-byte the same as the in-memory path — only the stores
+ * code above is byte-for-byte the same as the in-memory path - only the stores
  * and audit log differ (ADR-009).
  */
 export function createPgService(db: QueryExecutor, options: PgServiceOptions): RecordsService {
