@@ -7,7 +7,7 @@ interface Captured {
   authorization: string | null;
 }
 
-function fetchStub(payload: unknown, ok = true, status = 200): {
+function fetchStub(payload: unknown, status = 200): {
   fetchImpl: typeof fetch;
   captured: () => Captured | null;
 } {
@@ -67,7 +67,7 @@ describe("openai-compatible transport", () => {
   });
 
   it("throws on a non-2xx response", async () => {
-    const stub = fetchStub({}, false, 500);
+    const stub = fetchStub({}, 500);
     const transport = createOpenAiCompatibleTransport({
       baseUrl: "https://x/v1",
       apiKey: "k",

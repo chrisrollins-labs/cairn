@@ -1,8 +1,7 @@
 import { createMockTransport } from "@/core/ai/providers/mock";
 import type { AiTransport } from "@/core/ai/transport";
-import { createService } from "@/core/runtime";
+import { createMemoryService } from "@/core/runtime";
 import type { RecordsService } from "@/core/records/service";
-import { createMemoryStores } from "@/core/store/memory";
 import type { Stores } from "@/core/store/interfaces";
 import type { Clock, IdGen } from "@/shared/clock";
 
@@ -48,9 +47,7 @@ export function makeService(overrides?: {
   clock?: Clock;
   newId?: IdGen;
 }): TestHarness {
-  const stores = createMemoryStores();
-  const service = createService({
-    stores,
+  const { service, stores } = createMemoryService({
     transport: overrides?.transport ?? createMockTransport(),
     models: { default: "example/model-name" },
     clock: overrides?.clock ?? fixedClock(),

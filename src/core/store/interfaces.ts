@@ -1,5 +1,4 @@
 import type { TranscriptStore } from "@/core/ai/transcript";
-import type { AuditStore } from "@/core/audit/store";
 import type { Assessment, Draft, DraftStatus, RecordEntry } from "@/core/records/types";
 
 /**
@@ -32,10 +31,15 @@ export interface AssessmentStore {
   listByRecord(ownerId: string, recordId: string): Promise<Assessment[]>;
 }
 
+/**
+ * The record-domain stores. The audit log is a separate abstraction
+ * (@/core/audit/log) because, in the Postgres backend, the database — not a
+ * store — owns the chain; keeping it out of this bundle lets both backends
+ * share one shape.
+ */
 export interface Stores {
   readonly records: RecordStore;
   readonly drafts: DraftStore;
   readonly assessments: AssessmentStore;
   readonly transcripts: TranscriptStore;
-  readonly audit: AuditStore;
 }

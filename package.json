@@ -23,7 +23,7 @@
     "test:watch": "vitest",
     "check:rls": "node scripts/check-rls-coverage.mjs",
     "check:migrations": "node scripts/check-migration-order.mjs",
-    "seed": "tsx scripts/seed.ts"
+    "db:migrate": "tsx scripts/migrate.ts"
   },
   "dependencies": {
     "next": "16.2.10",

@@ -1,8 +1,9 @@
 import { AiGateway } from "@/core/ai/gateway";
 import { extractJsonObject } from "@/core/ai/json";
 import { scopePriorReflections, type ScopeOptions } from "@/core/ai/scoping";
-import type { AuditChain, ChainVerification } from "@/core/audit/chain";
+import type { ChainVerification } from "@/core/audit/chain";
 import type { AuditEvent } from "@/core/audit/event";
+import type { AuditLog } from "@/core/audit/log";
 import {
   buildAssessEntryMessages,
   buildDraftEntryMessages,
@@ -19,7 +20,7 @@ import type { AiOrigin, Assessment, Draft, RecordEntry } from "./types";
 export interface RecordsServiceDeps {
   readonly stores: Stores;
   readonly gateway: AiGateway;
-  readonly chain: AuditChain;
+  readonly auditLog: AuditLog;
   readonly clock: Clock;
   readonly newId: IdGen;
 }
@@ -58,7 +59,7 @@ export class RecordsService {
     };
 
     await this.deps.stores.drafts.insert(draft);
-    await this.deps.chain.append({
+    await this.deps.auditLog.append({
       ownerId,
       type: "draft.proposed",
       subjectId: draft.id,
@@ -122,7 +123,7 @@ export class RecordsService {
 
     const updated: Draft = { ...draft, title: clean.title, body: clean.body };
     await this.deps.stores.drafts.update(updated);
-    await this.deps.chain.append({
+    await this.deps.auditLog.append({
       ownerId,
       type: "draft.edited",
       subjectId: draft.id,
@@ -135,7 +136,7 @@ export class RecordsService {
     const draft = await this.requirePendingDraft(ownerId, draftId);
     const updated: Draft = { ...draft, status: "rejected", decidedAt: this.deps.clock() };
     await this.deps.stores.drafts.update(updated);
-    await this.deps.chain.append({
+    await this.deps.auditLog.append({
       ownerId,
       type: "draft.rejected",
       subjectId: draft.id,
@@ -215,7 +216,7 @@ export class RecordsService {
     };
 
     await this.deps.stores.records.insert(record);
-    await this.deps.chain.append({
+    await this.deps.auditLog.append({
       ownerId: input.ownerId,
       type: "record.committed",
       subjectId: record.id,
@@ -276,7 +277,7 @@ export class RecordsService {
     };
 
     await this.deps.stores.assessments.insert(assessment);
-    await this.deps.chain.append({
+    await this.deps.auditLog.append({
       ownerId,
       type: "assessment.generated",
       subjectId: assessment.id,
@@ -317,11 +318,11 @@ export class RecordsService {
   }
 
   async auditLog(ownerId: string): Promise<AuditEvent[]> {
-    return this.deps.chain.list(ownerId);
+    return this.deps.auditLog.list(ownerId);
   }
 
   async verifyAudit(ownerId: string): Promise<ChainVerification> {
-    return this.deps.chain.verify(ownerId);
+    return this.deps.auditLog.verify(ownerId);
   }
 
   // --- Internals ---

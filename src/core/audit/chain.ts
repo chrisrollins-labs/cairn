@@ -1,6 +1,7 @@
 import type { Clock } from "@/shared/clock";
 import { GENESIS_HASH } from "@/shared/hash";
 import type { AuditEvent, AuditEventType, AuditMetadata } from "./event";
+import type { AuditLog } from "./log";
 import { hashEvent } from "./preimage";
 import type { AuditStore } from "./store";
 
@@ -36,7 +37,7 @@ export interface ChainVerification {
  * is allowed — the domain services do that — it only makes the sequence of
  * actions provable after the fact.
  */
-export class AuditChain {
+export class AuditChain implements AuditLog {
   constructor(
     private readonly store: AuditStore,
     private readonly clock: Clock,

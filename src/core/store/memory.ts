@@ -112,6 +112,10 @@ export function createMemoryStores(): Stores {
     drafts: new MemoryDraftStore(),
     assessments: new MemoryAssessmentStore(),
     transcripts: new MemoryTranscriptStore(),
-    audit: new MemoryAuditStore(),
   };
+}
+
+/** The in-memory audit store the TypeScript AuditChain writes to. */
+export function createMemoryAuditStore(): AuditStore {
+  return new MemoryAuditStore();
 }

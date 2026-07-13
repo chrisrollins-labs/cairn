@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { AiGateway } from "@/core/ai/gateway";
+import { AiGateway, type GatewayModelConfig } from "@/core/ai/gateway";
 import type { AiTransport } from "@/core/ai/transport";
 import type { AiCompletionRequest } from "@/core/ai/types";
 import { createMemoryStores } from "@/core/store/memory";
@@ -24,7 +24,7 @@ function recordingTransport(): { transport: AiTransport; last: () => AiCompletio
   };
 }
 
-function makeGateway(transport: AiTransport, models = { default: "m-default" }) {
+function makeGateway(transport: AiTransport, models: GatewayModelConfig = { default: "m-default" }) {
   const stores = createMemoryStores();
   const gateway = new AiGateway({
     transport,
