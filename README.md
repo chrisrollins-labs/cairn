@@ -109,9 +109,20 @@ npm run check:migrations
 npm run build
 ```
 
-To run against Postgres instead, set `CAIRN_STORE=postgres` and `DATABASE_URL`
-(see `.env.example`), then `npm run db:migrate`. To use a real model, set the
-`AI_*` variables; otherwise the deterministic mock is used.
+To exercise the Postgres path instead (the pg-backed store, per-user RLS, and the
+DB-sealed audit chain), start a local database with Docker, point the app at it,
+and migrate:
+
+```bash
+docker compose up -d          # local Postgres, matches DATABASE_URL in .env.example
+cp .env.example .env.local    # then set CAIRN_STORE=postgres
+npm run db:migrate
+npm run dev
+```
+
+`docker-compose.yml` provisions `postgres://cairn:cairn@localhost:5432/cairn`, the
+value already in `.env.example`. To use a real model, set the `AI_*` variables;
+otherwise the deterministic mock is used.
 
 ## What's inside
 

@@ -1,0 +1,33 @@
+# Optional local Postgres for the "real database" path.
+#
+# The app and the full test suite run in-memory with zero infrastructure by
+# default (CAIRN_STORE=memory). Use this only to exercise the Postgres-backed
+# store, per-user row-level security, and the DB-sealed audit chain:
+#
+#   docker compose up -d
+#   cp .env.example .env.local   # then set CAIRN_STORE=postgres
+#   npm run db:migrate
+#   npm run dev
+#
+# Credentials, port, and database name match DATABASE_URL in .env.example
+# (postgres://cairn:cairn@localhost:5432/cairn). The migrations create the
+# pgcrypto extension, which the official Postgres image ships with.
+services:
+  postgres:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_USER: cairn
+      POSTGRES_PASSWORD: cairn
+      POSTGRES_DB: cairn
+    ports:
+      - "5432:5432"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U cairn -d cairn"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+    volumes:
+      - cairn_pgdata:/var/lib/postgresql/data
+
+volumes:
+  cairn_pgdata:
