@@ -1,0 +1,48 @@
+{
+  "name": "cairn",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Reference implementation for review-gated, tamper-evident personal records: AI drafts, a human approves, and every change joins a verifiable hash chain.",
+  "author": "Chris Rollins <chrisrollins360@gmail.com> (https://rollinsdigital.com)",
+  "license": "MIT",
+  "homepage": "https://rollinsdigital.com/projects/cairn",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/chrisrollins-labs/cairn.git"
+  },
+  "bugs": {
+    "url": "https://github.com/chrisrollins-labs/cairn/issues"
+  },
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "eslint .",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "check:rls": "node scripts/check-rls-coverage.mjs",
+    "check:migrations": "node scripts/check-migration-order.mjs",
+    "seed": "tsx scripts/seed.ts"
+  },
+  "dependencies": {
+    "next": "16.2.10",
+    "pg": "^8.13.1",
+    "react": "19.2.4",
+    "react-dom": "19.2.4",
+    "zod": "^4.1.5"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4",
+    "@types/node": "^22.10.0",
+    "@types/pg": "^8.11.10",
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
+    "eslint": "^9.17.0",
+    "eslint-config-next": "16.2.10",
+    "tailwindcss": "^4",
+    "tsx": "^4.19.2",
+    "typescript": "^5.7.0",
+    "vitest": "^3.2.4"
+  }
+}

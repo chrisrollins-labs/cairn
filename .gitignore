@@ -1,0 +1,27 @@
+# dependencies
+/node_modules
+/.pnp
+.pnp.*
+
+# next
+/.next/
+/out/
+
+# production
+/build
+
+# testing
+/coverage
+
+# env — never commit real secrets (see SECURITY.md)
+.env
+.env.*
+!.env.example
+
+# local database dumps / scratch — never commit real data
+/scratch/
+*.local.db
+
+# misc
+.DS_Store
+*.tsbuildinfo

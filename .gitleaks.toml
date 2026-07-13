@@ -1,0 +1,20 @@
+# gitleaks runs in CI on every push and PR, over the full history (fetch-depth
+# 0). This config keeps the default rule set and adds an allowlist for the
+# placeholder values that legitimately live in .env.example and docs, so the
+# scan flags real leaks only.
+title = "cairn gitleaks config"
+
+[extend]
+useDefault = true
+
+[allowlist]
+description = "Placeholders and example values that are not real secrets"
+regexes = [
+  '''your-api-key-here''',
+  '''example/model-name''',
+  '''api\.example-provider\.com''',
+  '''postgres://cairn:cairn@localhost''',
+]
+paths = [
+  '''\.env\.example''',
+]
